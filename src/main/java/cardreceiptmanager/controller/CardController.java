@@ -5,11 +5,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller
-public class MainController {
+import java.util.Map;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+@Controller
+public class CardController {
+
+    @RequestMapping(value = "/cards", method = RequestMethod.GET)
     public String index(Model model) {
-        return "home";
+
+        model.addAttribute("title", "Card Manager Test");
+        model.addAttribute("msg", "Hello, It is Card Manager");
+
+        return "cards";
     }
 }
