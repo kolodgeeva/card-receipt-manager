@@ -1,10 +1,10 @@
-package cardreceiptmanager.model.dao;
+package cardreceiptmanager.model.repository;
 
 import cardreceiptmanager.model.entity.Card;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CardDao extends CrudRepository<Card, Integer> {
+public interface CardRepository extends CrudRepository<Card, Integer> {
     List<Card> findByLastName(String lastName);
 }
