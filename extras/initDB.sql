@@ -1,0 +1,3 @@
+CREATE DATABASE card_db;
+CREATE USER CARD_USER WITH password '123';
+GRANT ALL privileges ON DATABASE card_db TO CARD_USER;
