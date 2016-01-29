@@ -1,6 +1,6 @@
-package cardreceiptmanager.model.repository;
+package cardreceiptmanager.domain.repository;
 
-import cardreceiptmanager.model.entity.Card;
+import cardreceiptmanager.domain.entity.Card;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

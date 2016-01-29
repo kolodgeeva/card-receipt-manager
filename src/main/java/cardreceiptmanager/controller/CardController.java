@@ -1,13 +1,11 @@
 package cardreceiptmanager.controller;
 
-import cardreceiptmanager.model.repository.CardRepository;
-import cardreceiptmanager.model.entity.Card;
+import cardreceiptmanager.domain.repository.CardRepository;
+import cardreceiptmanager.domain.entity.Card;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @Controller
 public class CardController {
@@ -16,7 +14,7 @@ public class CardController {
     private CardRepository cardRepository;
 
     // TODO: add permission for USER
-    @RequestMapping(value = "/card", method = RequestMethod.GET)
+    @RequestMapping(value = {"/card", "/"}, method = RequestMethod.GET)
      public String getAllCards(Model model) {
         model.addAttribute("cards", cardRepository.findAll());
         return "cards";

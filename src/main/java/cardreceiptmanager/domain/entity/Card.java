@@ -1,4 +1,4 @@
-package cardreceiptmanager.model.entity;
+package cardreceiptmanager.domain.entity;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package cardreceiptmanager.model.entity;
+package cardreceiptmanager.domain.entity;
 
 /**
  * Created by User on 1/27/2016.
