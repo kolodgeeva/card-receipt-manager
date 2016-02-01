@@ -4,6 +4,88 @@
 <head lang="en" th:replace="fragments/head :: head">
 </head>
 <body>
-<h1 th:inline="text">Add new card</h1>
+<div id="wrapper">
+
+      <nav th:replace="fragments/menu :: nav"></nav>
+
+      <div id="page-wrapper">
+            <div class="row">
+                  <div class="col-lg-12">
+                        <h1 class="page-header">Edit / New Card</h1>
+                  </div>
+            </div>
+
+
+            <div class="row">
+                  <div class="col-lg-12">
+                        <div class="panel panel-default">
+                              <div class="panel-heading">
+                                    Fill Form
+                              </div>
+                              <div class="panel-body">
+                                    <form role="form" th:action="@{/card/edit}" th:method="POST">
+                                          <div class="row">
+                                                <div class="col-lg-6">
+                                                      <div class="form-group">
+                                                            <label>Card Number</label>
+                                                            <input class="form-control" name="number"></input>
+                                                      </div>
+                                                      <div class="form-group">
+                                                            <label>First Name</label>
+                                                            <input class="form-control" name="firstName"></input>
+                                                      </div>
+                                                      <div class="form-group">
+                                                            <label>Last Name</label>
+                                                            <input class="form-control" name="lastName"></input>
+                                                      </div>
+                                                      <div class="form-group">
+                                                            <label>Middle Name</label>
+                                                            <input class="form-control" name="midName"></input>
+                                                      </div>
+                                                      <div class="form-group">
+                                                            <label>Upload Image</label>
+                                                            <input type="file" name="avatar"></input>
+                                                      </div>
+                                                </div>
+                                                <!-- /.col-lg-6 (nested) -->
+                                                <div class="col-lg-6">
+                                                      <div class="form-group">
+                                                            <label>Type</label>
+                                                            <select class="form-control" name="type">
+                                                                  <option>Deposit</option>
+                                                                  <option>Repost</option>
+                                                            </select>
+                                                      </div>
+                                                      <div class="form-group">
+                                                            <label>Phone</label>
+                                                            <input class="form-control" name="phone"></input>
+                                                      </div>
+                                                      <div class="form-group">
+                                                            <label>Link</label>
+                                                            <input class="form-control" name="webLink"></input>
+                                                      </div>
+                                                      <div class="form-group">
+                                                            <label>Comment</label>
+                                                            <textarea class="form-control" rows="3" name="comment"></textarea>
+                                                      </div>
+                                                      <div class="form-group">
+                                                            <button class="btn btn-primary" style="float:right" type="submit">Save</button>
+                                                      </div>
+                                                </div>
+                                                <!-- /.col-lg-6 (nested) -->
+                                          </div>
+                                    </form>
+                                    <!-- /.row (nested) -->
+                              </div>
+                              <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                  </div>
+                  <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+      </div>
+</div>
 </body>
 </html>

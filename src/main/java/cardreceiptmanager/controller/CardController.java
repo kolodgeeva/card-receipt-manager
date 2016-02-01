@@ -49,7 +49,7 @@ public class CardController {
     }
 
     // TODO: add permission for ADMIN
-    @RequestMapping(value = "/card", method = RequestMethod.PUT)
+    @RequestMapping(value = "/card/edit", method = RequestMethod.POST)
     public String updateCard(Card card) {
         cardRepository.save(card);
         return "redirect:/card/" + card.getId();

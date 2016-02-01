@@ -39,9 +39,9 @@
                                                                   <td th:text="${c.number}"></td>
                                                                   <td th:text="${c.firstName}"></td>
                                                                   <td th:text="${c.lastName}"></td>
-                                                                  <td><a href="#" th:href="${'/card/' + c.id}">
-                                                                        <i class="fa fa-edit fa-fw"/>
-                                                                  </a>
+                                                                  <td>
+                                                                        <a href="#" th:href="${'/card/' + c.id}"><i class="fa fa-info fa-fw"/></a>
+                                                                        <a href="#" th:href="${'/card/edit/' + c.id}"><i class="fa fa-edit fa-fw"/></a>
                                                                   </td>
                                                             </tr>
                                                       </tbody>
