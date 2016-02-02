@@ -42,42 +42,16 @@ public class CardController {
     }
 
     // TODO: add permission for ADMIN
-    @RequestMapping("/card/edit/{id}")
+    @RequestMapping("/card/form/{id}")
     public String edit(@PathVariable Integer id, Model model){
         model.addAttribute("card", cardRepository.findOne(id));
         return "cardForm";
     }
 
     // TODO: add permission for ADMIN
-    @RequestMapping(value = "/card/edit", method = RequestMethod.POST)
-    public String updateCard(Card card) {
-        cardRepository.save(card);
-        return "redirect:/card/" + card.getId();
-    }
-
-    // TODO: add permission for ADMIN
-    @RequestMapping(value = "/card/$id", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/card/delete/{id}")
     public String deleteCard(@PathVariable Integer id) {
         cardRepository.delete(id);
         return "redirect:/card";
     }
-
-    // TODO: delete it, only for test
-    @RequestMapping("/create")
-    @ResponseBody
-    public String create(String firstName, String lastName) {
-        String cardId = "";
-        try {
-            Card card = new Card(firstName, lastName);
-            cardRepository.save(card);
-            cardId = String.valueOf(card.getId());
-        }
-        catch (Exception ex) {
-            return "Error creating the user: " + ex.toString();
-        }
-        return "User successfully created with id = " + cardId;
-    }
-
-
-
 }

@@ -27,8 +27,9 @@ public class Card {
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "CREATE_DATE")
-    private String createDate;
+    private Date createDate;
 
     @Column(name = "PHONE")
     private String phone;
@@ -36,24 +37,31 @@ public class Card {
     @Column(name = "WEB_LINK")
     private String webLink;
 
+    @Column(name = "COMMENT")
+    private String comment;
+
+    @Column(name = "STATE")
+    private String state;
+
+    @Column(name = "TYPE")
+    private String type;
+
+    //  TODO Add file link
+
     public Card() {
     }
 
-    public Card(String firstName, String lastName, String midName, String number, Date birthDate, String createDate, String phone, String webLink) {
+    public Card(String firstName, String lastName, String midName, String number, Date birthDate, String phone, String webLink, String comment, String state, String type) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.midName = midName;
         this.number = number;
         this.birthDate = birthDate;
-        this.createDate = createDate;
         this.phone = phone;
         this.webLink = webLink;
-    }
-
-    // TODO Remove it
-    public Card(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.comment = comment;
+        this.state = state;
+        this.type = type;
     }
 
     public Integer getId() {
@@ -104,11 +112,11 @@ public class Card {
         this.birthDate = birthDate;
     }
 
-    public String getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
@@ -126,5 +134,29 @@ public class Card {
 
     public void setWebLink(String webLink) {
         this.webLink = webLink;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
