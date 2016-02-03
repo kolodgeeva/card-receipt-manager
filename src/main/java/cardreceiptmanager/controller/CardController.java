@@ -42,7 +42,7 @@ public class CardController {
     }
 
     // TODO: add permission for ADMIN
-    @RequestMapping("/card/form/{id}")
+    @RequestMapping("/card/edit/{id}")
     public String edit(@PathVariable Integer id, Model model){
         model.addAttribute("card", cardRepository.findOne(id));
         return "cardForm";

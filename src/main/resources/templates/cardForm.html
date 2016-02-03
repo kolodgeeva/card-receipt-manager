@@ -22,7 +22,7 @@
                                     Fill Form
                               </div>
                               <div class="panel-body">
-                                    <form role="form" th:action="@{/card}" th:object="${card}" th:method="POST">
+                                    <form th:action="@{/card}" th:object="${card}" th:method="POST">
                                           <input type="hidden" th:field="*{id}"></input>
                                           <div class="row">
                                                 <div class="col-lg-6">
@@ -70,7 +70,7 @@
                                                       </div>
                                                       <div class="form-group">
                                                             <label>Comment</label>
-                                                            <textarea class="form-control" rows="3"  th:field="*{comment}"></textarea>
+                                                            <textarea class="form-control" rows="3" th:field="*{comment}"></textarea>
                                                       </div>
                                                       <div class="form-group">
                                                             <button class="btn btn-primary" style="float:right" type="submit">Save</button>
@@ -93,7 +93,7 @@
 </div>
 
 <script>
-      $('.datepicker').datepicker();
+      $('.datepicker').datepicker('setValue', new Date());
 </script>
 
 </body>

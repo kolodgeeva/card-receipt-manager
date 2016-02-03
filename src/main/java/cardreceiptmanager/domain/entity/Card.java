@@ -27,7 +27,6 @@ public class Card {
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
-    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "CREATE_DATE")
     private Date createDate;
 
@@ -48,15 +47,22 @@ public class Card {
 
     //  TODO Add file link
 
+
+    @PrePersist
+    protected void onCreate() {
+        createDate = new Date();
+    }
+
     public Card() {
     }
 
-    public Card(String firstName, String lastName, String midName, String number, Date birthDate, String phone, String webLink, String comment, String state, String type) {
+    public Card(String firstName, String lastName, String midName, String number, Date birthDate, Date createDate, String phone, String webLink, String comment, String state, String type) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.midName = midName;
         this.number = number;
         this.birthDate = birthDate;
+        this.createDate = createDate;
         this.phone = phone;
         this.webLink = webLink;
         this.comment = comment;
@@ -104,22 +110,6 @@ public class Card {
         this.number = number;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -142,6 +132,22 @@ public class Card {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public String getState() {
