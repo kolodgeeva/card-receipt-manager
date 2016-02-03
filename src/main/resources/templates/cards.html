@@ -42,8 +42,10 @@
                                                                   <td>
                                                                         <a href="#" th:href="${'/card/' + c.id}"><i class="fa fa-info fa-fw"/></a>
                                                                         <a href="#" th:href="${'/card/edit/' + c.id}"><i class="fa fa-edit fa-fw"/></a>
-                                                                        <a href="#" th:href="${'/card/delete/' + c.id}"><i class="fa fa-trash-o fa-fw"/></a>
-                                                                        <a href="#" th:href="${'/card/ban/' + c.id}"><i class="fa fa-ban fa-fw"/></a>
+                                                                        <a href="#" th:href="${'/card/delete/' + c.id}"
+                                                                           onclick="return confirm('Are you sure you want to delete this card?');"><i class="fa fa-trash-o fa-fw"/></a>
+                                                                        <a href="#" th:href="${'/card/ban/' + c.id}"
+                                                                           onclick="return confirm('Are you sure you want to block this card?');"><i class="fa fa-ban fa-fw"/></a>
                                                                   </td>
                                                             </tr>
                                                       </tbody>
@@ -66,7 +68,6 @@
 
       </div>
 
-      <!-- Page-Level Demo Scripts - Tables - Use for reference -->
       <script>
             $(document).ready(function() {
                   $('#dataTables-example').DataTable({
