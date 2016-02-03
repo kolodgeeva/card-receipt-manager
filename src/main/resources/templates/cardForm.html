@@ -22,8 +22,9 @@
                                     Fill Form
                               </div>
                               <div class="panel-body">
-                                    <form th:action="@{/card}" th:object="${card}" th:method="POST">
+                                    <form th:action="@{/card}" th:object="${card}" th:method="POST" enctype="multipart/form-data">
                                           <input type="hidden" th:field="*{id}"></input>
+                                          <!--<input type="hidden" th:field="*{createDate}" ></input>-->
                                           <div class="row">
                                                 <div class="col-lg-6">
                                                       <div class="form-group">
@@ -48,25 +49,25 @@
                                                       </div>
                                                       <div class="form-group">
                                                             <label>Upload Image</label>
-                                                            <input type="file" ></input>
+                                                            <input type="file" name="file1"></input>
                                                       </div>
                                                 </div>
                                                 <!-- /.col-lg-6 (nested) -->
                                                 <div class="col-lg-6">
                                                       <div class="form-group">
                                                             <label>Type</label>
-                                                            <select class="form-control" name="type">
-                                                                  <option>Deposit</option>
-                                                                  <option>Repost</option>
+                                                            <select class="form-control" th:field="*{type}">
+                                                                  <option th:value="DEPOSIT">Deposit</option>
+                                                                  <option th:value="REPOST">Repost</option>
                                                             </select>
                                                       </div>
                                                       <div class="form-group">
                                                             <label>Phone</label>
-                                                            <input class="form-control"  th:field="*{phone}"></input>
+                                                            <input class="form-control" th:field="*{phone}"></input>
                                                       </div>
                                                       <div class="form-group">
                                                             <label>Link</label>
-                                                            <input class="form-control"  th:field="*{webLink}"></input>
+                                                            <input class="form-control" th:field="*{webLink}"></input>
                                                       </div>
                                                       <div class="form-group">
                                                             <label>Comment</label>

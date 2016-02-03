@@ -25,6 +25,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile("org.slf4j:slf4j-simple:1.6.1")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     // tag::security[]
     compile("org.springframework.boot:spring-boot-starter-security")

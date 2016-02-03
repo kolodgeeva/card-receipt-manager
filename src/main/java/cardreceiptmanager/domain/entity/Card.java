@@ -1,6 +1,8 @@
 package cardreceiptmanager.domain.entity;
 
 import javax.persistence.*;
+import java.sql.Blob;
+import java.util.Base64;
 import java.util.Date;
 
 @Entity
@@ -39,14 +41,17 @@ public class Card {
     @Column(name = "COMMENT")
     private String comment;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "STATE")
-    private String state;
+    private State state;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "TYPE")
-    private String type;
+    private Type type;
 
-    //  TODO Add file link
-
+    @Column(name = "FILE")
+    @Lob
+    private byte[] file;
 
     @PrePersist
     protected void onCreate() {
@@ -56,7 +61,8 @@ public class Card {
     public Card() {
     }
 
-    public Card(String firstName, String lastName, String midName, String number, Date birthDate, Date createDate, String phone, String webLink, String comment, String state, String type) {
+    public Card(String firstName, String lastName, String midName, String number, Date birthDate, Date createDate,
+                String phone, String webLink, String comment, State state, Type type, byte[] file) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.midName = midName;
@@ -68,6 +74,7 @@ public class Card {
         this.comment = comment;
         this.state = state;
         this.type = type;
+        this.file = file;
     }
 
     public Integer getId() {
@@ -150,19 +157,41 @@ public class Card {
         this.createDate = createDate;
     }
 
-    public String getState() {
+    public State getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(State state) {
         this.state = state;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Type type) {
         this.type = type;
+    }
+
+    public byte[] getFile() {
+        return file;
+    }
+
+    public String base64File() {
+        return Base64.getEncoder().encodeToString(file);
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
+    }
+
+    public enum State {
+        ACTIVE,
+        BLOCKED
+    }
+
+    public enum Type {
+        DEPOSIT,
+        REPOST
     }
 }
