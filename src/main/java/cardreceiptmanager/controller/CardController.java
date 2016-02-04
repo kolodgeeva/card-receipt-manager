@@ -44,11 +44,16 @@ public class CardController {
     // TODO: add permission for USER
     @RequestMapping(value = "/card", method = RequestMethod.POST)
     public String addCard(@RequestParam("file1") MultipartFile file, Card card) {
-        try {
-            byte[] bytes = file.getBytes();
-            card.setFile(bytes);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                card.setFile(bytes);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (card.getId() != null) {
+            Card existsCard = cardService.getCardById(card.getId());
+            card.setFile(existsCard.getFile());
         }
 
         cardService.saveCard(card);
@@ -73,6 +78,17 @@ public class CardController {
     @RequestMapping(value = "/card/delete/{id}")
     public String deleteCard(@PathVariable Integer id) {
         cardService.deleteCard(id);
+        return "redirect:/card";
+    }
+
+    // TODO: add permission for ADMIN
+    @RequestMapping(value = "/card/ban/{id}")
+    public String banCard(@PathVariable Integer id) {
+        Card card = cardService.getCardById(id);
+        if (card != null) {
+            card.setState(Card.State.BLOCKED);
+            cardService.saveCard(card);
+        }
         return "redirect:/card";
     }
 }

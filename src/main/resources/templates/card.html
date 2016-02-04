@@ -16,12 +16,11 @@
                                     <a href="#" th:href="${'/card/edit/' + card.id}"><i class="fa fa-edit fa-fw"/></a>
                                     <a href="#" th:href="${'/card/delete/' + card.id}"
                                        onclick="return confirm('Are you sure you want to delete this card?');"><i class="fa fa-trash-o fa-fw"/></a>
-                                    <a href="#" th:href="${'/card/ban/' + card.id}"
+                                    <a th:if="${card.isActive()}" href="#" th:href="${'/card/ban/' + card.id}"
                                        onclick="return confirm('Are you sure you want to block this card?');"><i class="fa fa-ban fa-fw"/></a>
                               </h1>
                         </div>
                   </div>
-
 
                   <div class="row">
                         <div class="col-lg-1">

@@ -185,6 +185,14 @@ public class Card {
         this.file = file;
     }
 
+    public boolean isBlocked() {
+        return state == State.BLOCKED;
+    }
+
+    public boolean isActive() {
+        return state == State.ACTIVE;
+    }
+
     public enum State {
         ACTIVE,
         BLOCKED

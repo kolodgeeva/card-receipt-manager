@@ -28,32 +28,33 @@
                                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                                       <thead>
                                                             <tr>
+                                                                  <th>Image</th>
                                                                   <th>Number</th>
-                                                                  <th>First Name</th>
-                                                                  <th>Last Name</th>
+                                                                  <th>Name</th>
+                                                                  <th>State</th>
                                                                   <th>Actions</th>
                                                             </tr>
                                                       </thead>
                                                       <tbody>
                                                             <tr th:each="c : ${cards}">
-                                                                  <td th:text="${c.number}"></td>
-                                                                  <td th:text="${c.firstName}"></td>
-                                                                  <td th:text="${c.lastName}"></td>
                                                                   <td>
-                                                                        <a href="#" th:href="${'/card/' + c.id}"><i class="fa fa-info fa-fw"/></a>
+                                                                        <a th:href="${'/card/' + c.id}">
+                                                                              <img height="30" th:src="${'data:image/png;base64,' + c.base64File()}"></img>
+                                                                        </a>
+                                                                  </td>
+                                                                  <td th:text="${c.number}"></td>
+                                                                  <td th:text="${c.firstName} + ' ' + ${c.lastName}"></td>
+                                                                  <td th:text="${c.state}"></td>
+                                                                  <td>
                                                                         <a href="#" th:href="${'/card/edit/' + c.id}"><i class="fa fa-edit fa-fw"/></a>
                                                                         <a href="#" th:href="${'/card/delete/' + c.id}"
                                                                            onclick="return confirm('Are you sure you want to delete this card?');"><i class="fa fa-trash-o fa-fw"/></a>
-                                                                        <a href="#" th:href="${'/card/ban/' + c.id}"
+                                                                        <a th:if="${c.isActive()}" href="#" th:href="${'/card/ban/' + c.id}"
                                                                            onclick="return confirm('Are you sure you want to block this card?');"><i class="fa fa-ban fa-fw"/></a>
                                                                   </td>
                                                             </tr>
                                                       </tbody>
                                                 </table>
-                                          </div>
-                                          <!-- /.table-responsive -->
-                                          <div class="well">
-                                                <h4>Some Information</h4>
                                           </div>
                                     </div>
                                     <!-- /.panel-body -->

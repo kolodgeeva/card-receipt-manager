@@ -57,8 +57,15 @@
                                                       <div class="form-group">
                                                             <label>Type</label>
                                                             <select class="form-control" th:field="*{type}">
-                                                                  <option th:value="DEPOSIT">Deposit</option>
-                                                                  <option th:value="REPOST">Repost</option>
+                                                                  <option th:value="DEPOSIT">DEPOSIT</option>
+                                                                  <option th:value="REPOST">REPOST</option>
+                                                            </select>
+                                                      </div>
+                                                      <div class="form-group">
+                                                            <label>Type</label>
+                                                            <select class="form-control" th:field="*{state}">
+                                                                  <option th:value="ACTIVE">ACTIVE</option>
+                                                                  <option th:value="BLOCKED">BLOCKED</option>
                                                             </select>
                                                       </div>
                                                       <div class="form-group">
