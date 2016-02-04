@@ -178,7 +178,10 @@ public class Card {
     }
 
     public String base64File() {
-        return Base64.getEncoder().encodeToString(file);
+        if (file != null) {
+            return Base64.getEncoder().encodeToString(file);
+        }
+        return null;
     }
 
     public void setFile(byte[] file) {

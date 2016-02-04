@@ -44,7 +44,7 @@
                               <p class="text-muted">Full Name:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p class="text-primary" th:text="${card.firstName} + ' ' + ${card.lastName} + ' ' + ${card.midName}"></p>
+                              <p th:text="${card.firstName} + ' ' + ${card.lastName} + ' ' + ${card.midName}"></p>
                         </div>
                   </div>
 
@@ -53,7 +53,7 @@
                               <p class="text-muted">Birth Date:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p class="text-primary" th:text="${card.birthDate}"></p>
+                              <p th:text="${card.birthDate}"></p>
                         </div>
                   </div>
 
@@ -62,7 +62,7 @@
                               <p class="text-muted">Created Date:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p class="text-primary" th:text="${card.createDate}"></p>
+                              <p th:text="${card.createDate}"></p>
                         </div>
                   </div>
 
@@ -71,7 +71,7 @@
                               <p class="text-muted">Phone:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p class="text-primary" th:text="${card.phone}"></p>
+                              <p th:text="${card.phone}"></p>
                         </div>
                   </div>
 
@@ -80,7 +80,7 @@
                               <p class="text-muted">Web:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p class="text-primary" th:text="${card.webLink}"></p>
+                              <a th:href="${card.webLink}" target="_blank" th:text="${card.webLink}"></a>
                         </div>
                   </div>
 
@@ -89,7 +89,7 @@
                               <p class="text-muted">Type:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p class="text-primary" th:text="${card.type}"></p>
+                              <p th:text="${card.type}"></p>
                         </div>
                   </div>
 
@@ -98,7 +98,7 @@
                               <p class="text-muted">State:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p class="text-primary" th:text="${card.state}"></p>
+                              <p th:text="${card.state}"></p>
                         </div>
                   </div>
 
@@ -107,7 +107,7 @@
                               <p class="text-muted">Comment:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p class="text-primary" th:text="${card.comment}"></p>
+                              <p th:text="${card.comment}"></p>
                         </div>
                   </div>
 

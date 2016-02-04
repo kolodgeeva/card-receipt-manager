@@ -1,6 +1,9 @@
 package cardreceiptmanager.service;
 
 import cardreceiptmanager.domain.entity.Card;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 public interface CardService {
 
@@ -9,6 +12,8 @@ public interface CardService {
     Card getCardById(Integer id);
 
     Card saveCard(Card card);
+
+    Card saveCard(Card card, MultipartFile file) throws IOException;
 
     void deleteCard(Integer id);
 
