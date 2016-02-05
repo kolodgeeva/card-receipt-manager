@@ -13,7 +13,7 @@ public interface CardService {
 
     Card saveCard(Card card);
 
-    Card saveCard(Card card, MultipartFile file) throws IOException;
+    Card saveCard(Card card, MultipartFile file);
 
     void deleteCard(Integer id);
 

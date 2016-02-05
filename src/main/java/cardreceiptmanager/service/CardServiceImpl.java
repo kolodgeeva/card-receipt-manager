@@ -43,11 +43,15 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public Card saveCard(Card card, MultipartFile file) throws IOException {
+    public Card saveCard(Card card, MultipartFile file) {
         if (!file.isEmpty()) {
             // Use selected file
-            byte[] bytes = file.getBytes();
-            card.setFile(bytes);
+            try {
+                byte[] bytes = file.getBytes();
+                card.setFile(bytes);
+            } catch (IOException e) {
+                log.warn("File didn't uploaded ", e);
+            }
         } else if (card.getId() != null) {
             Card existsCard = getCardById(card.getId());
             if (existsCard != null) {

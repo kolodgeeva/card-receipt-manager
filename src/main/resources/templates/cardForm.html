@@ -27,25 +27,29 @@
                                           <!--<input type="hidden" th:field="*{createDate}" ></input>-->
                                           <div class="row">
                                                 <div class="col-lg-6">
-                                                      <div class="form-group">
+                                                      <div th:class="${#fields.hasErrors('number')}? 'form-group has-error' : 'form-group'">
                                                             <label>Card Number</label>
                                                             <input class="form-control" th:field="*{number}"></input>
+                                                            <label th:if="${#fields.hasErrors('number')}" class="control-label" th:errors="*{number}"></label>
                                                       </div>
-                                                      <div class="form-group">
+                                                      <div th:class="${#fields.hasErrors('firstName')}? 'form-group has-error' : 'form-group'">
                                                             <label>First Name</label>
                                                             <input class="form-control" th:field="*{firstName}"></input>
+                                                            <label th:if="${#fields.hasErrors('firstName')}" class="control-label" th:errors="*{firstName}"></label>
                                                       </div>
-                                                      <div class="form-group">
+                                                      <div th:class="${#fields.hasErrors('lastName')}? 'form-group has-error' : 'form-group'">
                                                             <label>Last Name</label>
                                                             <input class="form-control" th:field="*{lastName}"></input>
+                                                            <label th:if="${#fields.hasErrors('lastName')}" class="control-label" th:errors="*{lastName}"></label>
                                                       </div>
-                                                      <div class="form-group">
+                                                      <div>
                                                             <label>Middle Name</label>
                                                             <input class="form-control" th:field="*{midName}"></input>
                                                       </div>
-                                                      <div class="form-group">
+                                                      <div th:class="${#fields.hasErrors('birthDate')}? 'form-group has-error' : 'form-group'">
                                                             <label>Birth Date</label>
                                                             <input class="form-control datepicker" th:field="*{birthDate}"></input>
+                                                            <label th:if="${#fields.hasErrors('birthDate')}" class="control-label" th:errors="*{birthDate}"></label>
                                                       </div>
                                                       <div class="form-group">
                                                             <label>Upload Image</label>
@@ -54,27 +58,31 @@
                                                 </div>
                                                 <!-- /.col-lg-6 (nested) -->
                                                 <div class="col-lg-6">
-                                                      <div class="form-group">
+                                                      <div th:class="${#fields.hasErrors('type')}? 'form-group has-error' : 'form-group'">
                                                             <label>Type</label>
                                                             <select class="form-control" th:field="*{type}">
                                                                   <option th:value="DEPOSIT">DEPOSIT</option>
                                                                   <option th:value="REPOST">REPOST</option>
                                                             </select>
+                                                            <label th:if="${#fields.hasErrors('type')}" class="control-label" th:errors="*{type}"></label>
                                                       </div>
-                                                      <div class="form-group">
-                                                            <label>Type</label>
+                                                      <div th:class="${#fields.hasErrors('state')}? 'form-group has-error' : 'form-group'">
+                                                            <label>State</label>
                                                             <select class="form-control" th:field="*{state}">
                                                                   <option th:value="ACTIVE">ACTIVE</option>
                                                                   <option th:value="BLOCKED">BLOCKED</option>
                                                             </select>
+                                                            <label th:if="${#fields.hasErrors('state')}" class="control-label" th:errors="*{state}"></label>
                                                       </div>
-                                                      <div class="form-group">
+                                                      <div th:class="${#fields.hasErrors('phone')}? 'form-group has-error' : 'form-group'">
                                                             <label>Phone</label>
                                                             <input class="form-control" th:field="*{phone}"></input>
+                                                            <label th:if="${#fields.hasErrors('phone')}" class="control-label" th:errors="*{phone}"></label>
                                                       </div>
-                                                      <div class="form-group">
+                                                      <div th:class="${#fields.hasErrors('webLink')}? 'form-group has-error' : 'form-group'">
                                                             <label>Link</label>
                                                             <input class="form-control" th:field="*{webLink}"></input>
+                                                            <label th:if="${#fields.hasErrors('webLink')}" class="control-label" th:errors="*{webLink}"></label>
                                                       </div>
                                                       <div class="form-group">
                                                             <label>Comment</label>

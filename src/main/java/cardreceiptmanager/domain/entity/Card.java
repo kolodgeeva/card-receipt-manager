@@ -1,7 +1,12 @@
 package cardreceiptmanager.domain.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
-import java.sql.Blob;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import java.util.Base64;
 import java.util.Date;
 
@@ -15,26 +20,33 @@ public class Card {
 
     @Basic(optional = false)
     @Column(name = "FIRST_NAME")
+    @NotEmpty
     private String firstName;
 
     @Column(name = "LAST_NAME")
+    @NotEmpty
     private String lastName;
 
     @Column(name = "MID_NAME")
     private String midName;
 
     @Column(name = "NUMBER")
+    @NotEmpty
     private String number;
 
     @Column(name = "BIRTH_DATE")
+    @NotNull
+    @Past(message="only the past is valid")
     private Date birthDate;
 
     @Column(name = "CREATE_DATE")
     private Date createDate;
 
     @Column(name = "PHONE")
+    @Pattern(regexp="(^$|[0-9]{10})", message = "must be numeric")
     private String phone;
 
+    @URL
     @Column(name = "WEB_LINK")
     private String webLink;
 
@@ -43,10 +55,12 @@ public class Card {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "STATE")
+    @NotNull
     private State state;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "TYPE")
+    @NotNull
     private Type type;
 
     @Column(name = "FILE")
