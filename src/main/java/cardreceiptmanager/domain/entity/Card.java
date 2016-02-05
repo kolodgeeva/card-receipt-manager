@@ -18,32 +18,32 @@ public class Card {
     @Column(name = "ID")
     private Integer id;
 
+    @NotEmpty
     @Basic(optional = false)
     @Column(name = "FIRST_NAME")
-    @NotEmpty
     private String firstName;
 
-    @Column(name = "LAST_NAME")
     @NotEmpty
+    @Column(name = "LAST_NAME")
     private String lastName;
 
     @Column(name = "MID_NAME")
     private String midName;
 
-    @Column(name = "NUMBER")
     @NotEmpty
+    @Column(name = "NUMBER", unique = true)
     private String number;
 
-    @Column(name = "BIRTH_DATE")
     @NotNull
     @Past(message="only the past is valid")
+    @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
     @Column(name = "CREATE_DATE")
     private Date createDate;
 
-    @Column(name = "PHONE")
     @Pattern(regexp="(^$|[0-9]{10})", message = "must be numeric")
+    @Column(name = "PHONE")
     private String phone;
 
     @URL
@@ -53,18 +53,18 @@ public class Card {
     @Column(name = "COMMENT")
     private String comment;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "STATE")
-    @NotNull
     private State state;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "TYPE")
-    @NotNull
     private Type type;
 
-    @Column(name = "FILE")
     @Lob
+    @Column(name = "FILE")
     private byte[] file;
 
     @PrePersist

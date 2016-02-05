@@ -24,7 +24,7 @@
                               <div class="panel-body">
                                     <form th:action="@{/card}" th:object="${card}" th:method="POST" enctype="multipart/form-data">
                                           <input type="hidden" th:field="*{id}"></input>
-                                          <!--<input type="hidden" th:field="*{createDate}" ></input>-->
+                                          <input type="hidden" th:field="*{createDate}" class="datepicker"></input>
                                           <div class="row">
                                                 <div class="col-lg-6">
                                                       <div th:class="${#fields.hasErrors('number')}? 'form-group has-error' : 'form-group'">

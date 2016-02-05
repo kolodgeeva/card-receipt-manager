@@ -1,21 +1,20 @@
 package cardreceiptmanager.controller;
 
-import cardreceiptmanager.domain.repository.CardRepository;
 import cardreceiptmanager.domain.entity.Card;
 import cardreceiptmanager.service.CardService;
-import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.sql.Blob;
 
 @Controller
 public class CardController {
@@ -46,6 +45,11 @@ public class CardController {
     // TODO: add permission for USER
     @RequestMapping(value = "/card", method = RequestMethod.POST)
      public String addCard(@RequestParam("file1") MultipartFile file, @Valid Card card , BindingResult result) {
+
+        if (!cardService.isNumberUnique(card)) {
+            result.rejectValue("number", "error.card", "must be unique");
+        }
+
         if (result.hasErrors()) {
             return "cardForm";
         }

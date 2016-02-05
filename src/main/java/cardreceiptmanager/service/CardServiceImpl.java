@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
+import java.util.Objects;
 
 @Service
 public class CardServiceImpl implements CardService {
@@ -83,6 +85,15 @@ public class CardServiceImpl implements CardService {
             card.setState(Card.State.BLOCKED);
             saveCard(card);
         }
+    }
+
+    @Override
+    public boolean isNumberUnique(Card card) {
+        List<Card> cards = cardRepository.findByNumber(card.getNumber());
+        for(Card c: cards) {
+            return Objects.equals(c.getId(), card.getId());
+        }
+        return true;
     }
 
     private void setPhotoFromVK(Card card) {

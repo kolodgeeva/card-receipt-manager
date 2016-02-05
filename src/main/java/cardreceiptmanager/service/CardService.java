@@ -3,9 +3,7 @@ package cardreceiptmanager.service;
 import cardreceiptmanager.domain.entity.Card;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-
-public interface CardService {
+public interface CardService{
 
     Iterable<Card> listAllCards();
 
@@ -18,5 +16,7 @@ public interface CardService {
     void deleteCard(Integer id);
 
     void blockCard(Integer id);
+
+    boolean isNumberUnique(Card card);
 
 }
