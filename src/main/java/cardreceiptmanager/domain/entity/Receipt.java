@@ -23,7 +23,7 @@ public class Receipt {
     @Column(name = "COMMENT")
     private String comment;
 
-    @JoinColumn(name = "card_id", referencedColumnName = "id")
+    @JoinColumn(name = "card_id")
     @ManyToOne
     private Card card;
 

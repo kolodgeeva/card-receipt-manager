@@ -68,7 +68,7 @@ public class Card {
     @Column(name = "FILE")
     private byte[] file;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "card" , cascade = CascadeType.ALL)
     @OrderBy("id asc")
     private List<Receipt> receipts;
 
