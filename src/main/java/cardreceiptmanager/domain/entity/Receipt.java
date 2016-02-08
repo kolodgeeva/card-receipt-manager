@@ -24,7 +24,7 @@ public class Receipt {
     @Column(name = "AMOUNT")
     @NotEmpty
     @Digits(integer = 10, fraction = 5)
-    private String amount;
+    private Integer amount;
 
     @Column(name = "COMMENT")
     private String comment;
@@ -40,7 +40,7 @@ public class Receipt {
         this.card = card;
     }
 
-    public Receipt(String number, Date createDate, String amount, String comment, Card card) {
+    public Receipt(String number, Date createDate, Integer amount, String comment, Card card) {
         this.number = number;
         this.createDate = createDate;
         this.amount = amount;
@@ -72,11 +72,11 @@ public class Receipt {
         this.createDate = createDate;
     }
 
-    public String getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
