@@ -26,7 +26,7 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
-    public Receipt getCardById(Integer id) {
+    public Receipt getReceiptById(Integer id) {
         return receiptRepository.findOne(id);
     }
 }

@@ -1,10 +1,9 @@
 package cardreceiptmanager.domain.entity;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class Receipt {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -26,17 +25,21 @@ public class Receipt {
 
     @JoinColumn(name = "card_id", referencedColumnName = "id")
     @ManyToOne
-    private Card person;
+    private Card card;
 
     public Receipt() {
     }
 
-    public Receipt(String number, Date createDate, String amount, String comment, Card person) {
+    public Receipt(Card card) {
+        this.card = card;
+    }
+
+    public Receipt(String number, Date createDate, String amount, String comment, Card card) {
         this.number = number;
         this.createDate = createDate;
         this.amount = amount;
         this.comment = comment;
-        this.person = person;
+        this.card = card;
     }
 
     public Integer getId() {
@@ -79,11 +82,11 @@ public class Receipt {
         this.comment = comment;
     }
 
-    public Card getPerson() {
-        return person;
+    public Card getCard() {
+        return card;
     }
 
-    public void setPerson(Card person) {
-        this.person = person;
+    public void setCard(Card card) {
+        this.card = card;
     }
 }

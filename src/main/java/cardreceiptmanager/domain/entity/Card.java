@@ -1,6 +1,5 @@
 package cardreceiptmanager.domain.entity;
 
-import org.hibernate.annotations.BatchSize;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 
@@ -69,9 +68,8 @@ public class Card {
     @Column(name = "FILE")
     private byte[] file;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "card", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OrderBy("id asc")
-    @BatchSize(size = 1000)
     private List<Receipt> receipts;
 
     @PrePersist

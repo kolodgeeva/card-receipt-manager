@@ -1,6 +1,8 @@
 package cardreceiptmanager.controller;
 
+import cardreceiptmanager.domain.entity.Card;
 import cardreceiptmanager.domain.entity.Receipt;
+import cardreceiptmanager.service.CardService;
 import cardreceiptmanager.service.ReceiptService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,29 +20,34 @@ public class ReceiptController {
 
     private ReceiptService receiptService;
 
+    private CardService cardService;
+
     @Autowired
     public void setReceiptService(ReceiptService receiptService) {
         this.receiptService = receiptService;
     }
 
+    @Autowired
+    public void setCardService(CardService cardService) {
+        this.cardService = cardService;
+    }
+
     // TODO: add permission for USER
-    @RequestMapping("receipt/new")
-    public String add(Model model){
-        model.addAttribute("receipt", new Receipt());
+    @RequestMapping("/card/{id}/receipt/new")
+    public String add(@PathVariable Integer id, Model model){
+        Card card = cardService.getCardById(id);
+        model.addAttribute("receipt", new Receipt(card));
         return "receiptForm";
     }
 
     // TODO: add permission for USER
-    @RequestMapping(value = "receipt", method = RequestMethod.POST)
+    @RequestMapping(value = "/receipt", method = RequestMethod.POST)
     public String addCard(Receipt receipt) {
         receiptService.saveReceipt(receipt);
-        return "redirect:/receipt/" + receipt.getId();
+        if (receipt.getCard() != null) {
+            return "redirect:/card/" + receipt.getCard().getId();
+        }
+        else return "error";
     }
 
-    // TODO: add permission for USER
-    @RequestMapping(value = "/card/{id}", method = RequestMethod.GET)
-    public String getCard(@PathVariable Integer id, Model model) {
-        model.addAttribute("receipt", receiptService.getCardById(id));
-        return "receipt";
-    }
 }
