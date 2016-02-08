@@ -1,6 +1,9 @@
 package cardreceiptmanager.domain.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import java.util.Date;
 
 @Entity
@@ -12,12 +15,15 @@ public class Receipt {
 
     @Basic(optional = false)
     @Column(name = "NUMBER", unique = true)
+    @NotEmpty
     private String number;
 
     @Column(name = "CREATE_DATE")
     private Date createDate;
 
     @Column(name = "AMOUNT")
+    @NotEmpty
+    @Digits(integer = 10, fraction = 5)
     private String amount;
 
     @Column(name = "COMMENT")

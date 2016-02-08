@@ -1,12 +1,14 @@
 package cardreceiptmanager.service;
 
-import cardreceiptmanager.domain.entity.Card;
 import cardreceiptmanager.domain.entity.Receipt;
 import cardreceiptmanager.domain.repository.ReceiptRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ReceiptServiceImpl implements ReceiptService {
@@ -21,6 +23,15 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
+    public Boolean isNumberUnique(Receipt receipt) {
+        List<Receipt> receipts = receiptRepository.findByNumber(receipt.getNumber());
+        for(Receipt r: receipts) {
+            return Objects.equals(r.getId(), receipt.getId());
+        }
+        return true;
+    }
+
+    @Override
     public Receipt saveReceipt(Receipt receipt) {
         return receiptRepository.save(receipt);
     }
@@ -28,5 +39,10 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Override
     public Receipt getReceiptById(Integer id) {
         return receiptRepository.findOne(id);
+    }
+
+    @Override
+    public void deleteReceipt(Integer id) {
+        receiptRepository.delete(id);
     }
 }
