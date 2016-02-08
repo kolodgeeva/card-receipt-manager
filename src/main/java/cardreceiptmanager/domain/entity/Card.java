@@ -1,5 +1,6 @@
 package cardreceiptmanager.domain.entity;
 
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 
@@ -9,6 +10,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Card {
@@ -66,6 +68,11 @@ public class Card {
     @Lob
     @Column(name = "FILE")
     private byte[] file;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "card", fetch = FetchType.LAZY)
+    @OrderBy("id asc")
+    @BatchSize(size = 1000)
+    private List<Receipt> receipts;
 
     @PrePersist
     protected void onCreate() {
@@ -208,6 +215,14 @@ public class Card {
 
     public boolean isActive() {
         return state == State.ACTIVE;
+    }
+
+    public List<Receipt> getReceipts() {
+        return receipts;
+    }
+
+    public void setReceipts(List<Receipt> receipts) {
+        this.receipts = receipts;
     }
 
     public enum State {
