@@ -110,6 +110,24 @@
                         </div>
                   </div>
 
+                  <div class="row">
+                        <div class="col-lg-1">
+                              <p class="text-muted">Total Amount:</p>
+                        </div>
+                        <div class="col-lg-11">
+                              <p th:text="${card.discount.totalAmount}"></p>
+                        </div>
+                  </div>
+
+                  <div class="row">
+                        <div class="col-lg-1">
+                              <p class="text-muted">Discount:</p>
+                        </div>
+                        <div class="col-lg-11">
+                              <p th:text="${card.discount.discount}"></p>
+                        </div>
+                  </div>
+
                   <div class="panel panel-default">
                         <div class="panel-heading">
                               <a href="#" th:href="${'/card/' + card.id + '/receipt/new'}"><i class="fa fa-plus fa-fw"/></a> Receipts

@@ -72,6 +72,9 @@ public class Card {
     @OrderBy("id asc")
     private List<Receipt> receipts;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "card")
+    private Discount discount;
+
     @PrePersist
     protected void onCreate() {
         createDate = new Date();
@@ -221,6 +224,14 @@ public class Card {
 
     public void setReceipts(List<Receipt> receipts) {
         this.receipts = receipts;
+    }
+
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
     }
 
     public enum State {
