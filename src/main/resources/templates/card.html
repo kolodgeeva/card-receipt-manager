@@ -115,7 +115,8 @@
                               <p class="text-muted">Total Amount:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p th:text="${card.discount.totalAmount}"></p>
+                              <p  th:if="${card.discount != null}" th:text="${card.discount.totalAmount}"></p>
+                              <p  th:if="${card.discount == null}" th:text="0"></p>
                         </div>
                   </div>
 
@@ -124,7 +125,8 @@
                               <p class="text-muted">Discount:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p th:text="${card.discount.discount}"></p>
+                              <p  th:if="${card.discount != null}" th:text="${card.discount.discount}"></p>
+                              <p  th:if="${card.discount == null}" th:text="0"></p>
                         </div>
                   </div>
 
