@@ -18,7 +18,10 @@
     <ul class="nav navbar-right navbar-top-links">
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-user fa-fw"></i> user <b class="caret"></b>
+                <i class="fa fa-user fa-fw"></i>
+                <span sec:authorize="hasRole('ROLE_ADMIN')">Admin</span>
+                <span sec:authorize="hasRole('ROLE_USER')">User</span>
+                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu dropdown-user">
                 <li><a href="/login?logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -33,9 +36,6 @@
             <ul class="nav" id="side-menu">
                 <li>
                     <a href="/card"><i class="fa fa-table fa-fw"></i> Cards</a>
-                </li>
-                <li>
-                    <a href="/info"><i class="fa fa-info-circle fa-fw"></i> Info</a>
                 </li>
             </ul>
         </div>

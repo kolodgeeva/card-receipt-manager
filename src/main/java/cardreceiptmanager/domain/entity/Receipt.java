@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -23,6 +24,7 @@ public class Receipt {
 
     @Column(name = "AMOUNT")
     @Digits(integer = 10, fraction = 5)
+    @NotNull
     private Double amount;
 
     @Column(name = "COMMENT")
