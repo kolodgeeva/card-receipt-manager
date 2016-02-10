@@ -3,13 +3,14 @@ package cardreceiptmanager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
@@ -18,9 +19,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers("/css/**", "/js/**")
                 .permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().access("hasRole('USER') or hasRole('ADMIN')")
+                .and().exceptionHandling().accessDeniedPage("/access_denied")
                 .and()
-            .formLogin()
+                .formLogin()
                 .loginPage("/login")
                 .permitAll()
                 .and()

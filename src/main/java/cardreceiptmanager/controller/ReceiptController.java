@@ -7,6 +7,7 @@ import cardreceiptmanager.service.ReceiptService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,7 +36,7 @@ public class ReceiptController {
         this.cardService = cardService;
     }
 
-    // TODO: add permission for USER
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     @RequestMapping("/card/{id}/receipt/new")
     public String add(@PathVariable Integer id, Model model){
         Card card = cardService.getCardById(id);
@@ -43,7 +44,7 @@ public class ReceiptController {
         return "receiptForm";
     }
 
-    // TODO: add permission for USER
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     @RequestMapping(value = "/receipt", method = RequestMethod.POST)
     public String addCard(@Valid Receipt receipt, BindingResult result) {
         if (!receiptService.isNumberUnique(receipt)) {
@@ -61,14 +62,14 @@ public class ReceiptController {
         else return "error";
     }
 
-    // TODO: add permission for ADMIN
+    @Secured("ROLE_ADMIN")
     @RequestMapping("/receipt/edit/{id}")
     public String edit(@PathVariable Integer id, Model model){
         model.addAttribute("receipt", receiptService.getReceiptById(id));
         return "receiptForm";
     }
 
-    // TODO: add permission for ADMIN
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/receipt/delete/{id}")
     public String deleteCard(@PathVariable Integer id) {
         Receipt receipt = receiptService.getReceiptById(id);

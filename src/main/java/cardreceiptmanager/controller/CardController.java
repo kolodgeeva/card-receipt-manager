@@ -5,6 +5,7 @@ import cardreceiptmanager.service.CardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,21 +29,21 @@ public class CardController {
         this.cardService = cardService;
     }
 
-    // TODO: add permission for USER
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     @RequestMapping(value = {"/card", "/"}, method = RequestMethod.GET)
      public String getAllCards(Model model) {
         model.addAttribute("cards", cardService.listAllCards());
         return "cards";
     }
 
-    // TODO: add permission for USER
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     @RequestMapping("card/new")
     public String add(Model model){
         model.addAttribute("card", new Card());
         return "cardForm";
     }
 
-    // TODO: add permission for USER
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     @RequestMapping(value = "/card", method = RequestMethod.POST)
      public String addCard(@RequestParam("file1") MultipartFile file, @Valid Card card , BindingResult result) {
 
@@ -57,28 +58,28 @@ public class CardController {
         return "redirect:/card/" + card.getId();
     }
 
-    // TODO: add permission for USER
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     @RequestMapping(value = "/card/{id}", method = RequestMethod.GET)
     public String getCard(@PathVariable Integer id, Model model) {
         model.addAttribute("card", cardService.getCardById(id));
         return "card";
     }
 
-    // TODO: add permission for ADMIN
+    @Secured("ROLE_ADMIN")
     @RequestMapping("/card/edit/{id}")
     public String edit(@PathVariable Integer id, Model model){
         model.addAttribute("card", cardService.getCardById(id));
         return "cardForm";
     }
 
-    // TODO: add permission for ADMIN
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/card/delete/{id}")
     public String deleteCard(@PathVariable Integer id) {
         cardService.deleteCard(id);
         return "redirect:/card";
     }
 
-    // TODO: add permission for ADMIN
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/card/ban/{id}")
     public String banCard(@PathVariable Integer id) {
         cardService.blockCard(id);
