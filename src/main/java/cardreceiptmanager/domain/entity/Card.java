@@ -72,7 +72,7 @@ public class Card {
     @OrderBy("id asc")
     private List<Receipt> receipts;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "card")
+    @OneToOne(mappedBy = "card")
     private Discount discount;
 
     @PrePersist
