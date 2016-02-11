@@ -56,7 +56,7 @@
                                                                         <p  th:if="${c.discount == null}" th:text="0"></p>
                                                                   </td>
                                                                   <td>
-                                                                        <p  th:if="${c.discount != null}" th:text="${c.discount.discount}"></p>
+                                                                        <p  th:if="${c.discount != null}" th:text="${c.discount.discount} + '%'"></p>
                                                                         <p  th:if="${c.discount == null}" th:text="0"></p>
                                                                   </td>
                                                                   <td>

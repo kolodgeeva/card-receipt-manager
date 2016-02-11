@@ -117,10 +117,9 @@
                         <div class="col-lg-11">
                               <div th:if="${card.discount != null}">
                                     <span th:text="${card.discount.totalAmount}"></span>
-                                    <span>%</span>
                               </div>
                               <div th:if="${card.discount == null}">
-                                    <span>0 %</span>
+                                    <span>0</span>
                               </div>
                         </div>
                   </div>
