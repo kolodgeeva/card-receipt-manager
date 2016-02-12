@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -88,6 +89,7 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
+    @Transactional
     public boolean isNumberUnique(Card card) {
         List<Card> cards = cardRepository.findByNumber(card.getNumber());
         for(Card c: cards) {
