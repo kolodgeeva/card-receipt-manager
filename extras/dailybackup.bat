@@ -16,5 +16,5 @@ for /f "tokens=1-3 delims=: " %%i in ("%time%") do (
 
 
  echo on
- %PGBIN%pg_dump -U backup -f "D:/Backup/%year%%month%%day%%hh%.backup" card_db
+ %PGBIN%pg_dump -U backup -f "D:/Backup/dump_%year%%month%%day%%hh%.backup" card_db
 
