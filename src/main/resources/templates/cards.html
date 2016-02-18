@@ -60,9 +60,9 @@
                                                                         <p  th:if="${c.discount == null}" th:text="0"></p>
                                                                   </td>
                                                                   <td>
-                                                                        <a href="#" th:href="${'/card/' + c.id + '/receipt/new'}" title="Add receipt"><i class="fa fa-plus fa-fw"/></a>
-                                                                        <a href="#" th:href="${'/card/' + c.id}" title="View card"><i class="fa fa-info fa-fw"/></a>
-                                                                        <a href="#" sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/card/edit/' + c.id}" title="Edit card"><i class="fa fa-edit fa-fw"/></a>
+                                                                        <a href="#" th:href="${'/card/' + c.id + '/receipt/new'}" target="_blank" title="Add receipt"><i class="fa fa-plus fa-fw"/></a>
+                                                                        <a href="#" th:href="${'/card/' + c.id}" title="View card" target="_blank"><i class="fa fa-info fa-fw"/></a>
+                                                                        <a href="#" sec:authorize="hasRole('ROLE_ADMIN')" target="_blank" th:href="${'/card/edit/' + c.id}" title="Edit card"><i class="fa fa-edit fa-fw"/></a>
                                                                         <a href="#" sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/card/delete/' + c.id}" title="Delete card"
                                                                            onclick="return confirm('Are you sure you want to delete this card?');"><i class="fa fa-trash-o fa-fw"/></a>
                                                                         <a th:if="${c.isActive()}" sec:authorize="hasRole('ROLE_ADMIN')" href="#" th:href="${'/card/ban/' + c.id}" title="Block Card"
