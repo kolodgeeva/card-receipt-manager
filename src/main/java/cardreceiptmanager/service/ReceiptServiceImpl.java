@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +25,7 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
+    @Transactional
     public Boolean isNumberUnique(Receipt receipt) {
         List<Receipt> receipts = receiptRepository.findByNumber(receipt.getNumber());
         for(Receipt r: receipts) {
@@ -38,6 +40,7 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
+    @Transactional
     public Iterable<Receipt> listReceiptsByFilter(String filter) {
         if(filter == null || filter.isEmpty()) {
             return new ArrayList();
