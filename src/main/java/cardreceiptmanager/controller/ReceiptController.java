@@ -85,6 +85,7 @@ public class ReceiptController {
     @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     @RequestMapping(value = {"/receipts"}, method = RequestMethod.GET)
     public String getReceipts(@RequestParam("filter") String filter ,Model model) {
+        model.addAttribute("filter", filter);
         model.addAttribute("receipts", receiptService.listReceiptsByFilter(filter));
         return "receipts";
     }
