@@ -35,9 +35,7 @@
                                                                   <td th:text="${r.number}"></td>
                                                                   <td th:text="${r.amount}"></td>
                                                                   <td>
-                                                                        <a th:href="${'/card/' + r.card.id}">
-                                                                              <p th:text="${r.card.number}"></p>
-                                                                        </a>
+                                                                        <a target="_blank" th:href="${'/card/' + r.card.id}" th:text="${r.card.number}"></a>
                                                                   </td>
                                                             </tr>
                                                       </tbody>

@@ -164,7 +164,7 @@
                                                 <td th:text="${r.createDate}"></td>
                                                 <td th:text="${r.comment}"></td>
                                                 <td>
-                                                      <a href="#" sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/receipt/edit/' + r.id}"><i class="fa fa-edit fa-fw"/></a>
+                                                      <a href="#" target="_blank" sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/receipt/edit/' + r.id}"><i class="fa fa-edit fa-fw"/></a>
                                                       <a href="#" sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/receipt/delete/' + r.id}"
                                                          onclick="return confirm('Are you sure you want to delete this receipt?');"><i class="fa fa-trash-o fa-fw"/></a>
                                                 </td>
