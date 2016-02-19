@@ -11,7 +11,7 @@
             <div id="page-wrapper">
                   <div class="row">
                         <div class="col-lg-12">
-                              <h1 class="page-header">Cards</h1>
+                              <h1 class="page-header">Receipts by <b th:text="${filter}"></b></h1>
                         </div>
                         <!-- /.col-lg-12 -->
                   </div>
@@ -32,12 +32,8 @@
                                                       </thead>
                                                       <tbody>
                                                             <tr th:each="r : ${receipts}">
-                                                                  <td>
-                                                                        <a th:href="${'/receipt/' + r.id}">
-                                                                              <p th:text="${r.number}"></p>
-                                                                        </a>
-                                                                  </td>
-                                                                  <td th:text="${c.amount}"></td>
+                                                                  <td th:text="${r.number}"></td>
+                                                                  <td th:text="${r.amount}"></td>
                                                                   <td>
                                                                         <a th:href="${'/card/' + r.card.id}">
                                                                               <p th:text="${r.card.number}"></p>
