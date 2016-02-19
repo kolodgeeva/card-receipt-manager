@@ -39,7 +39,7 @@ public class ReceiptServiceImpl implements ReceiptService {
 
     @Override
     public Iterable<Receipt> listReceiptsByFilter(String filter) {
-        if(filter == null || !filter.isEmpty()) {
+        if(filter == null || filter.isEmpty()) {
             return new ArrayList();
         }
         return receiptRepository.findByNumberContaining(filter);
