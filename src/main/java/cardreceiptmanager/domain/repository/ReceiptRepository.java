@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ReceiptRepository extends CrudRepository<Receipt, Integer> {
     List<Receipt> findByNumber(String number);
+    Iterable<Receipt> findByNumberContaining(String number);
 }

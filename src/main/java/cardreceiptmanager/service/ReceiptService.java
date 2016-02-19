@@ -1,5 +1,6 @@
 package cardreceiptmanager.service;
 
+import cardreceiptmanager.domain.entity.Card;
 import cardreceiptmanager.domain.entity.Receipt;
 
 public interface ReceiptService {
@@ -11,5 +12,7 @@ public interface ReceiptService {
     Receipt getReceiptById(Integer id);
 
     void deleteReceipt(Integer id);
+
+    Iterable<Receipt> listReceiptsByFilter(String filter);
 
 }
