@@ -1,14 +1,19 @@
 package cardreceiptmanager.domain.entity;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
 public class Receipt {
+
+    private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "ID")
@@ -19,6 +24,8 @@ public class Receipt {
     @NotEmpty
     private String number;
 
+    @NotNull
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     @Column(name = "CREATE_DATE")
     private Date createDate;
 
@@ -67,6 +74,10 @@ public class Receipt {
 
     public Date getCreateDate() {
         return createDate;
+    }
+
+    public String getCreateDateString() {
+        return format.format(createDate);
     }
 
     public void setCreateDate(Date createDate) {

@@ -37,7 +37,7 @@ public class ReceiptController {
         this.cardService = cardService;
     }
 
-    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
+    @Secured("ROLE_ADMIN")
     @RequestMapping("/card/{id}/receipt/new")
     public String add(@PathVariable Integer id, Model model){
         Card card = cardService.getCardById(id);
@@ -45,7 +45,7 @@ public class ReceiptController {
         return "receiptForm";
     }
 
-    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/receipt", method = RequestMethod.POST)
     public String addCard(@Valid Receipt receipt, BindingResult result) {
         if (!receiptService.isNumberUnique(receipt)) {

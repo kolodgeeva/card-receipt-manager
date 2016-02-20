@@ -2,17 +2,21 @@ package cardreceiptmanager.domain.entity;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 public class Card {
+
+    private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -36,10 +40,13 @@ public class Card {
     private String number;
 
     @NotNull
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     @Past(message="only the past is valid")
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
+    @NotNull
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     @Column(name = "CREATE_DATE")
     private Date createDate;
 
@@ -167,12 +174,20 @@ public class Card {
         return birthDate;
     }
 
+    public String getBirthDateString() {
+        return format.format(birthDate);
+    }
+
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
     public Date getCreateDate() {
         return createDate;
+    }
+
+    public String getCreateDateString() {
+        return format.format(createDate);
     }
 
     public void setCreateDate(Date createDate) {

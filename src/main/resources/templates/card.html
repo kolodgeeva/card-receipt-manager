@@ -52,7 +52,7 @@
                               <p class="text-muted">Birth Date:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p th:text="${card.birthDate}"></p>
+                              <p th:text="${card.getBirthDateString()}"></p>
                         </div>
                   </div>
 
@@ -61,7 +61,7 @@
                               <p class="text-muted">Created Date:</p>
                         </div>
                         <div class="col-lg-11">
-                              <p th:text="${card.createDate}"></p>
+                              <p th:text="${card.getCreateDateString()}"></p>
                         </div>
                   </div>
 
@@ -141,7 +141,7 @@
 
                   <div class="panel panel-default">
                         <div class="panel-heading">
-                              <a href="#" th:href="${'/card/' + card.id + '/receipt/new'}"><i class="fa fa-plus fa-fw"/></a> Receipts
+                              <a href="#" sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/card/' + card.id + '/receipt/new'}"><i class="fa fa-plus fa-fw"/></a> Receipts
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -161,7 +161,7 @@
                                           <tr th:each="r : ${card.receipts}">
                                                 <td th:text="${r.number}"></td>
                                                 <td th:text="${r.amount}"></td>
-                                                <td th:text="${r.createDate}"></td>
+                                                <td th:text="${r.getCreateDateString()}"></td>
                                                 <td th:text="${r.comment}"></td>
                                                 <td>
                                                       <a href="#" target="_blank" sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/receipt/edit/' + r.id}"><i class="fa fa-edit fa-fw"/></a>
@@ -180,7 +180,17 @@
       <script>
             $(document).ready(function() {
                   $('#dataTables-receipts').DataTable({
-                        responsive: true
+                        responsive: true,
+                        aLengthMenu: [[25, 50, 75, -1], [25, 50, 75, "All"]],
+                        pageLength: 25,
+                        "aoColumns": [
+                              null,
+                              { "bSearchable": false },
+                              null,
+                              null,
+                              null
+                        ]
+
                   });
             });
       </script>

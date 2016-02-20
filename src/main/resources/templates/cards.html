@@ -87,11 +87,25 @@
 
       <script>
             $(document).ready(function() {
-                  $('#dataTables-cards').DataTable({
+                  var table = $('#dataTables-cards').DataTable({
                         responsive: true,
                         aLengthMenu: [[25, 50, 75, -1], [25, 50, 75, "All"]],
-                        pageLength: 25
+                        pageLength: 25,
+                        "aoColumns": [
+                              null,
+                              null,
+                              null,
+                              { "bSearchable": false },
+                              null,
+                              null
+                        ]
                   });
+                  /*$('#dataTables-cards_filter label input[type=search]').on( 'keyup', function () {
+                        table
+                          .columns( 1 )
+                          .search( this.value )
+                          .draw();
+                  } );*/
             });
       </script>
 
