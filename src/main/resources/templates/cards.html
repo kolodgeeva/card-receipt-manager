@@ -60,7 +60,7 @@
                                                                         <p  th:if="${c.discount == null}" th:text="0"></p>
                                                                   </td>
                                                                   <td>
-                                                                        <a href="#" th:href="${'/card/' + c.id + '/receipt/new'}" target="_blank" title="Add receipt"><i class="fa fa-plus fa-fw"/></a>
+                                                                        <a href="#" sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/card/' + c.id + '/receipt/new'}" target="_blank" title="Add receipt"><i class="fa fa-plus fa-fw"/></a>
                                                                         <a href="#" th:href="${'/card/' + c.id}" title="View card" target="_blank"><i class="fa fa-info fa-fw"/></a>
                                                                         <a href="#" sec:authorize="hasRole('ROLE_ADMIN')" target="_blank" th:href="${'/card/edit/' + c.id}" title="Edit card"><i class="fa fa-edit fa-fw"/></a>
                                                                         <a href="#" sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/card/delete/' + c.id}" title="Delete card"
@@ -100,12 +100,6 @@
                               null
                         ]
                   });
-                  /*$('#dataTables-cards_filter label input[type=search]').on( 'keyup', function () {
-                        table
-                          .columns( 1 )
-                          .search( this.value )
-                          .draw();
-                  } );*/
             });
       </script>
 
