@@ -1,20 +1,13 @@
 @echo off
-set BACKUPDIR=D:/Backup
+set BACKUPDIR=F:\CardReceiptManager\backups
 SET PGPASSWORD=djkliTR765JHlldfg
-set PGBIN="D:/PostgreSQL/9.4/bin/"
-for /f "tokens=1-4 delims=/ " %%i in ("%date%") do (
- set dow=%%i
+set PGBIN="F:\postrges\bin\"
+for /f "tokens=1-4 delims=. " %%i in ("%date%") do (
+ set day=%%i
  set month=%%j
- set day=%%k
- set year=%%l
+ set year=%%k
 )
-
-for /f "tokens=1-3 delims=: " %%i in ("%time%") do (
- set hh=%%i
- set nn=%%j
-)
-
 
  echo on
- %PGBIN%pg_dump -U backup -f "D:/Backup/dump_%year%%month%%day%%hh%.backup" card_db
-
+ %PGBIN%pg_dump -U backup -f "F:\CardReceiptManager\backups\dump_%year%_%month%_%day%.backup" card_db
+ pause
